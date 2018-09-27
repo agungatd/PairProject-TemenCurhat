@@ -75,24 +75,20 @@ class TemenCurhatController {
         });
     }
     static dashboard(req, res){
-        console.log(req.session);
-        
-        // let minAge = Number(req.body.age) -5
-        // let maxAge = Number(req.body.age) +5
         modelsSesiCurhat.findAll({
             where: {
-                age: {[Op.between]: [Number(req.session.user.age) -5, Number(req.session.user.age) +5]}
+                age: {[Op.between]: [Number(req.session.user.age) -5, Number(req.session.user.age) +5]},
+                status: false
             }
         })
         .then((result) => {
             modelsSesiCurhat.findAll({
                 where: {
-                    // id: id sesion
-                    
+                    TemenCurhatId: req.session.user.id    
                 }
             })
             .then((sesi) => {
-                console.log(result);
+                console.log(sesi);
                 
                 res.render('temencurhatdashboard', {datas: result, mySesi: sesi})
             })
@@ -103,15 +99,16 @@ class TemenCurhatController {
     static detailsesi(req, res){
         modelsSesiCurhat.findById(req.params.id)
         .then((result) => {
-            console.log(req.session.user)
-            res.render('temencurhatdetail', {data: result})
+            let idSesi = req.session.user.id
+            res.render('temencurhatdetail', {data: result, idSesi: idSesi})
         }).catch((err) => {
             res.send(err)
         });
     }
     static getsesi(req, res){
         modelsSesiCurhat.update({
-            TemenCurhatId: req.params.idTemen
+            TemenCurhatId: req.params.idTemen,
+            status: true
         }, { where: {
             id: req.params.idSesi
         }})

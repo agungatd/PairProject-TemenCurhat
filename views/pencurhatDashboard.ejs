@@ -13,6 +13,7 @@
     <h4>Klik <a href="/pencurhat/add">buat sesi curhat</a></h4>
   <% } %>
   <!-- TABEL -->
+  <h4>Klik <a href="/pencurhat/add">buat sesi curhat baru</a></h4><br>
   <table border="1">
     <thead>
       <tr>
@@ -24,7 +25,7 @@
         <th>Kriteria Umur</th>
         <th>Kriteria Jenis Kelamin</th>
         <th>Reward Untuk Teman Curhat</th>
-        <th>Status Sesi Curhat</th>
+        <th>Status Sesi Curhat & Pilihan</th>
       </tr>
     </thead>
     <tbody>
@@ -39,9 +40,12 @@
         <td><%= sesi.gender %></td>
         <td><%= sesi.reward %></td>
         <% if (sesi.status) { %>
-          <td>Open</td>
+          <td>Closed ||
+          <a href="/pencurhat/<%= sesi.id %>/review"></a>Kasi Review</td>
         <% } else { %>
-          <td>Closed</td>
+          <td>Open
+            ||
+          <a href="/pencurhat/<%= sesi.id %>/edit">EDIT</a> || <a href="/pencurhat/<%= sesi.id %>/delete">DELETE</a></td>
         <% } %>
       </tr>
       <% }) %>
