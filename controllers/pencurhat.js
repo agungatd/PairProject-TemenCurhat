@@ -3,6 +3,7 @@ const modelsPencurhat = require('../models').Pencurhat
 const modelsTemenCurhat = require('../models').TemenCurhat
 const modelsSesiCurhat = require('../models').SesiCurhat
 const modelExpertise  = require('../models').Expertise
+const crypto = require('crypto')
 
 class Controller {
   static login(req, res) {
@@ -34,26 +35,33 @@ class Controller {
   }
 
   static register(req, res) {
-    res.render('pencurhatRegister', {errMsg:null})
+    res.render(' ', {errMsg:null})
   }
 
   static registerPost(req, res) {
-    // res.send(req.body)
-      modelsPencurhat.create({
-        name: req.body.name,
-        gender: req.body.gender,
-        email: req.body.email,
-        phone: req.body.phone,
-        birthDate: req.body.birthDate,
-        city: req.body.city,
-        password: req.body.password
-    })
-    .then((result) => {
-        res.redirect('/pencurhat')
-    })
-    .catch((err) => {
-        res.send(err)
-    });
+    res.send(req.body)
+
+        let password = req.body.password;
+        const secret = 'qerjalemburbagaiquda';
+        const hash = crypto.createHmac('sha256', secret)
+                    .update(password)
+                    .digest('hex');
+    console.log(req.body.password, 'dan', hash)
+    //   modelsPencurhat.create({
+    //     name: req.body.name,
+    //     gender: req.body.gender,
+    //     email: req.body.email,
+    //     phone: req.body.phone,
+    //     birthDate: req.body.birthDate,
+    //     city: req.body.city,
+    //     password: hash
+    // })
+    // .then((result) => {
+    //     res.redirect('/pencurhat')
+    // })
+    // .catch((err) => {
+    //     res.send(err)
+    // });
   }
 
   static findAllSesiCurhat(req, res) {
@@ -98,9 +106,3 @@ class Controller {
 }
 
 module.exports = Controller
-// .get('/', ControllerPencurhat.findAll)
-// .get('/add', ControllerPencurhat.add)
-// .post('/add', ControllerPencurhat.addPost)
-// .get('/:id/edit', ControllerPencurhat.edit)
-// .post('/:id/edit', ControllerPencurhat.editPost)
-// .delete('/:id/delete', ControllerPencurhat.delete)

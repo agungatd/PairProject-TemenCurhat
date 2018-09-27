@@ -42,16 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-  //   hooks: {
-  //   afterValidate(instace,options){
-  //     let password = instace.password;
-  //     const secret = 'qerjalemburbagaiquda';
-  //     const hash = crypto.createHmac('sha256', secret)
-  //                 .update(password)
-  //                 .digest('hex');
-  //                 instace.password = hash;
-  //   }
-  // }
+    
 });
   Pencurhat.associate = function(models) {
     // associations can be defined here
