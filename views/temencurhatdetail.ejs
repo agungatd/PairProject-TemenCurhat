@@ -46,9 +46,17 @@
             <th>description</th>
             <td><%= data.description %></td>
         </tr>
+        <% if(data.testimony){ %>
+            <tr>
+                <th>Testimoni</th>
+                <td><%= data.testimoni %></td>
+            </tr>
+        <% } %>
     </table>
     <a href="/temen-curhat/dashboard">Back</a>
-    <a href="/temen-curhat/<%= data.id %>/getsesi/<%= idSesi %>">Ambil Sesi</a>
+    <% if(!data.status){ %>
+        <a href="/temen-curhat/<%= data.id %>/getsesi/<%= idSesi %>">Ambil Sesi</a>
+    <% } %>
 <br>
 </body>
 </html>

@@ -24,9 +24,8 @@ class Controller {
         if(!user){
             res.send('akun tidak ada')
         } else{
-          console.log('masuuk');
             req.session.user = {
-                id: user.id,
+                id: user.id
             }
           res.redirect('/pencurhat/dashboard')
     }}).catch((err) => {

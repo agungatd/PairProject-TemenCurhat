@@ -15,12 +15,12 @@
     <h4>===== jadwal Sesi TemenCurhat kamu : ======</h4>
         <table border="1">
             <tr>
-                <th>Time</th>
-                <th>Place</th>
-                <th>Title</th>
-                <th>Reward</th>
-                <th>Nama Yg curhat</th>
-                <th>options</th>
+                <th>Waktu</th>
+                <th>Tempat</th>
+                <th>Judul</th>
+                <th>Hadiah</th>
+                <th>Pilihan</th>
+                <th>Status</th>
             </tr>
             <% mySesi.forEach(sesi => { %>
                 <tr>
@@ -28,8 +28,12 @@
                     <td><%= sesi.place %></td>
                     <td><%= sesi.title %></td>
                     <td><%= sesi.reward %></td>
-                    <td></td>
                     <td><a href="/temen-curhat/<%=sesi.id%>/detailsesi">Detail</a></td>
+                    <% if(!sesi.testimoni){ %>
+                        <td>belum direview</td>
+                    <% } else { %>
+                        <td>Sudah direview</td>
+                    <% } %>
                 </tr>
             <% }) %>
         </table>
@@ -38,12 +42,11 @@
 
     <table border="1">
         <tr>
-            <th>Time</th>
-            <th>Place</th>
-            <th>Title</th>
-            <th>Reward</th>
-            <th>Nama Yg curhat</th>
-            <th>options</th>
+            <th>Waktu</th>
+            <th>Tempat</th>
+            <th>Judul</th>
+            <th>Hadiah</th>
+            <th>Pilihan</th>
         </tr>
         <% datas.forEach(data => { %>
             <tr>
@@ -51,7 +54,6 @@
                 <td><%= data.place %></td>
                 <td><%= data.title %></td>
                 <td><%= data.reward %></td>
-                <td></td>
                 <td><a href="/temen-curhat/<%=data.id%>/detailsesi">Detail</a></td>
             </tr>
         <% }) %>

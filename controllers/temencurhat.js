@@ -1,4 +1,3 @@
-const TemenCurhat = require('../models').TemenCurhat
 const modelsPencurhat = require('../models').Pencurhat
 const modelsTemenCurhat = require('../models').TemenCurhat
 const modelsSesiCurhat = require('../models').SesiCurhat
@@ -85,7 +84,7 @@ class TemenCurhatController {
             modelsSesiCurhat.findAll({
                 where: {
                     TemenCurhatId: req.session.user.id    
-                }
+                }, order : [['time', 'DESC']]
             })
             .then((sesi) => {
                 console.log(sesi);
@@ -97,8 +96,14 @@ class TemenCurhatController {
         });
     }
     static detailsesi(req, res){
-        modelsSesiCurhat.findById(req.params.id)
+        modelsSesiCurhat.findOne({
+            where: {
+                id: req.params.id
+            }
+            // , include: [{model: modelsPencurhat}]    // eiger loading erorr
+        })
         .then((result) => {
+            // res.send(result)
             let idSesi = req.session.user.id
             res.render('temencurhatdetail', {data: result, idSesi: idSesi})
         }).catch((err) => {
