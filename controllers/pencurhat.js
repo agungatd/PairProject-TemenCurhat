@@ -49,7 +49,7 @@ class Controller {
         password: req.body.password
     })
     .then((result) => {
-        res.redirect('/')
+        res.redirect('/pencurhat')
     })
     .catch((err) => {
         res.send(err)
@@ -81,18 +81,19 @@ class Controller {
   }
   static addSesiCurhatPost(req,res) {
     res.send(req.body)
-    // modelsSesiCurhat.create({
-    //   title: req.body.title,
-    //   description: req.body.description,
-    //   place: req.body.place,
-    //   expertise: req.body.expertise,
-    //   time: req.body.time,
-    //   age: req.body.age,
-    //   gender: req.body.gender,
-    //   rating: null,
-    //   reward: req.body.reward,
-    //   // PencurhatId: req.session.user
-    // })
+    modelsSesiCurhat.create({
+      title: req.body.title,
+      description: req.body.description,
+      place: req.body.place,
+      expertise: req.body.expertise,
+      time: req.body.time,
+      age: req.body.age,
+      gender: req.body.gender,
+      rating: null,
+      reward: req.body.reward,
+      // PencurhatId: req.session.user
+    })
+    
   }
 }
 
