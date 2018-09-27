@@ -1,6 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const SesiCurhat = sequelize.define('SesiCurhat', {
+    id:{
+      type: DataTypes.INTEGER, 
+      autoIncrement: true, 
+      primaryKey: true
+    },
     title: {
       type: DataTypes.STRING,
       validate: {

@@ -13,11 +13,13 @@
     
     <%- include('./partials/regis') %>
 
+    <label for="">Expertise</label><br>
     <select id="profession" name="expertise">
-        <% datas.forEach(data => { %>
+        <% datas.forEach(data => { 
+            if (data.name === 'Tidak Perlu') { } else { %>
             <option value="<%= data.name %>"><%= data.name %></option>
-        <% }) %>
-    </select>
+        <% }}) %>
+    </select> <br><br>
     <input type="submit">
 </form>
 </body>

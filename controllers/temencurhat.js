@@ -11,13 +11,13 @@ class TemenCurhatController {
             gender: req.body.gender,
             email: req.body.email,
             phone: req.body.phone,
-            birthDate: new Date(req.body.birthDate).toString(),
+            birthDate: req.body.birthDate,
             city: req.body.city,
             expertise: req.body.expertise,
-            password: 'azazaza'
+            rating: null
         })
         .then((result) => {
-            res.send(result)
+            res.redirect('/temen-curhat')
         }).catch((err) => {
             res.send(err)
         });
@@ -69,7 +69,46 @@ class TemenCurhatController {
             res.send(err)
         });
     }
-
+    static dashboard(req, res){
+        
+        modelsSesiCurhat.findAll({
+            order: [['time', 'ASC']]
+        })
+        .then((result) => {
+            // if(result)
+            modelsSesiCurhat.findAll({
+                where: {
+                    // id: id sesion
+                    
+                }
+            })
+            .then((sesi) => {
+                res.render('temencurhatdashboard', {datas: result, mySesi: sesi})
+            })
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+    static detailsesi(req, res){
+        modelsSesiCurhat.findById(req.params.id)
+        .then((result) => {
+            res.render('temencurhatdetail', {data: result})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+    static getsesi(req, res){
+        modelsSesiCurhat.update({
+            TemenCurhatId: req.params.idTemen
+        }, { where: {
+            id: req.params.idSesi
+        }})
+        .then((result) => {
+            res.redirect('/temen-curhat/dashboard')
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
 
 }
 

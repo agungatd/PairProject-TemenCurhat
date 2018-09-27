@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>detail sesi</title>
+</head>
+<body>
+    <h1>Detail Sesi</h1>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <td><%= data.title %></td>
+        </tr>
+        <tr>
+            <th>Nama yang mo Curhat</th>
+            <td>name</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><%= data.gender %></td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td><%= data.age %></td>
+        </tr>
+        <tr>
+            <th>Expertise/category</th>
+            <td><%= data.expertise %></td>
+        </tr>
+        <tr>
+            <th>Reward</th>
+            <td><%= data.reward %></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><%= data.place %></td>
+        </tr>
+        <tr>
+            <th>time</th>
+            <td><%= data.time %></td>
+        </tr>
+        <tr>
+            <th>description</th>
+            <td><%= data.description %></td>
+        </tr>
+    </table>
+    <a href="/temen-curhat/dashboard">Back</a>
+    <a href="/temen-curhat/<%= data.id %>/getsesi/:idTemen">Ambil Sesi</a>
+<br>
+</body>
+</html>

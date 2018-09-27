@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       unique: true,
       validate: {
         notEmpty: true
@@ -45,10 +45,13 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    rating: {
-      type: DataTypes.INTEGER
-    },
-    password: DataTypes.STRING
+    rating: DataTypes.INTEGER,
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    }
 
   }, {});
   TemenCurhat.associate = function(models) {

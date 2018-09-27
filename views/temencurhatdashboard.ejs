@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    <h1>Dashboard Temen Curhat</h1>
+    <h3>Hi Temen Curhat :)</h3>
+    <h4>Bantu Orang lain untuk share masalah yang mereka hadapi</h4>
+    <h4>Kamu akan mendapatkan teman baru, pengalaman dan juga reward ❤️</h4>
+
+    <h4>===== jadwal Sesi TemenCurhat kamu : ======</h4>
+        <table border="1">
+            <tr>
+                <th>Time</th>
+                <th>Place</th>
+                <th>Title</th>
+                <th>Reward</th>
+                <th>Nama Yg curhat</th>
+                <th>options</th>
+            </tr>
+            <!-- <% mySesi.forEach(sesi => { %>
+                <tr>
+                    <td><%= sesi.time %></td>
+                    <td><%= sesi.place %></td>
+                    <td><%= sesi.title %></td>
+                    <td><%= sesi.reward %></td>
+                    <td></td>
+                    <td><a href="/temen-curhat/<%=sesi.id%>/detailsesi">Detail</a></td>
+                </tr>
+            <% }) %> -->
+        </table>
+
+    <h4>===== Calon teman (atau mungkin calon jodoh) yang membutuhkan Kamu : =====</h4>
+
+    <table border="1">
+        <tr>
+            <th>Time</th>
+            <th>Place</th>
+            <th>Title</th>
+            <th>Reward</th>
+            <th>Nama Yg curhat</th>
+            <th>options</th>
+        </tr>
+        <% datas.forEach(data => { %>
+            <tr>
+                <td><%= data.time %></td>
+                <td><%= data.place %></td>
+                <td><%= data.title %></td>
+                <td><%= data.reward %></td>
+                <td></td>
+                <td><a href="/temen-curhat/<%=data.id%>/detailsesi">Detail</a></td>
+            </tr>
+        <% }) %>
+
+    </table>
+
+</body>
+</html>
