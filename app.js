@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const models = require('./models')
 
 app.set('view engine', 'ejs')
-// const PencurhatRoute = require('./routes')
+const PencurhatRoute = require('./routes/pencurhat')
 // const TemenCurhatRoute = require('./routes')
 // const SesiCurhatRoute = require('./routes')
 
@@ -18,7 +18,7 @@ app.use(function(req, res, next){
   next();
 });
 
-// app.use('/pencurhat', PencurhatRoute)
+app.use('/pencurhat', PencurhatRoute)
 // app.use('/temen-curhat', TemenCurhatRoute)
 // app.use('sesi-curhat', SesiCurhatRoute)
 
