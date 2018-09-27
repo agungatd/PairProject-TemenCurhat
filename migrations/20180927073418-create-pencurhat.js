@@ -19,7 +19,7 @@ module.exports = {
         unique: true
       },
       phone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         unique: true
       },
       birthDate: {

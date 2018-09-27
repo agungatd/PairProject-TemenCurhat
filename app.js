@@ -9,6 +9,12 @@ const PencurhatRoute = require('./routes/pencurhat')
 const TemenCurhatRoute = require('./routes/temencurhat')
 // const SesiCurhatRoute = require('./routes')
 
+// const session = require('express-session')
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+// }));
+
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -18,7 +24,9 @@ app.use(function(req, res, next){
   next();
 });
 
-// app.use('/pencurhat', PencurhatRoute)
+app.use(express.static(__dirname + '/public'));
+
+app.use('/pencurhat', PencurhatRoute)
 app.use('/temen-curhat', TemenCurhatRoute)
 // app.use('sesi-curhat', SesiCurhatRoute)
 
