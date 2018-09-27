@@ -41,7 +41,18 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     }
-  }, {});
+  }, {
+  //   hooks: {
+  //   afterValidate(instace,options){
+  //     let password = instace.password;
+  //     const secret = 'qerjalemburbagaiquda';
+  //     const hash = crypto.createHmac('sha256', secret)
+  //                 .update(password)
+  //                 .digest('hex');
+  //                 instace.password = hash;
+  //   }
+  // }
+});
   Pencurhat.associate = function(models) {
     // associations can be defined here
     Pencurhat.belongsToMany(models.TemenCurhat, {through: models.SesiCurhat})
