@@ -1,5 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
+  const crypto = require('crypto');
+
   const Pencurhat = sequelize.define('Pencurhat', {
     name: {
       type: DataTypes.STRING,
@@ -42,17 +44,17 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-  //   hooks: {
-  //   afterValidate(instace,options){
-  //     let password = instace.password;
-  //     const secret = 'qerjalemburbagaiquda';
-  //     const hash = crypto.createHmac('sha256', secret)
-  //                 .update(password)
-  //                 .digest('hex');
-  //                 instace.password = hash;
-  //   }
-  // }
-});
+    hooks:{
+      afterValidate(instace,options){
+        let password = instace.password;
+        const secret = 'qerjalemburbagaiquda';
+        const hash = crypto.createHmac('sha256', secret)
+                    .update(password)
+                    .digest('hex');
+                    instace.password = hash;
+      }
+    }
+  });
   Pencurhat.associate = function(models) {
     // associations can be defined here
     Pencurhat.belongsToMany(models.TemenCurhat, {through: models.SesiCurhat})

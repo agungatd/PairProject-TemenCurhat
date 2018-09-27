@@ -13,7 +13,7 @@ router.post('/register', TemenCurhatController.add)
 router.get('/dashboard', TemenCurhatController.dashboard)
 
 router.get('/:id/detailsesi', TemenCurhatController.detailsesi)
-router.get('/:idSesi/getsesi/:idTemen', TemenCurhatController.getsesi)
+router.get('/:idSesi/getsesi/:idTemen', TemenCurhatController.getsesi) 
 
 router.get('/:id/delete', TemenCurhatController.delete)
 router.get('/:id/edit', TemenCurhatController.edit)

@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const ControllerPencurhat = require('../controllers/pencurhat')
 
 
@@ -12,8 +11,8 @@ router.post('/register', ControllerPencurhat.registerPost)
 //=================== CRUD SESICurhat ======================//
 router.get('/dashboard', ControllerPencurhat.findAllSesiCurhat)
 
-router.get('/add', ControllerPencurhat.addSesiCurhat)
-router.post('/add', ControllerPencurhat.addSesiCurhatPost)
+// router.get('/add', ControllerPencurhat.addSesiCurhat)
+// router.post('/add', ControllerPencurhat.addSesiCurhatPost)
 
 // router.get('/:id/edit', ControllerPencurhat.edit)
 // router.post('/:id/edit', ControllerPencurhat.editPost)
