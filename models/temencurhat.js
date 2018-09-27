@@ -46,18 +46,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     rating: {
-      type: DataTypes.INTEGER,
-      validate: {
-        min: {
-          args: 1,
-          msg: 'Min rating adalah 1, masa mau kasi 0 ??'
-        },
-        max: {
-          args: 10,
-          msg: 'Max rating adalah 10'
-        }
-      }
-    }
+      type: DataTypes.INTEGER
+    },
+    password: DataTypes.STRING
 
   }, {});
   TemenCurhat.associate = function(models) {
