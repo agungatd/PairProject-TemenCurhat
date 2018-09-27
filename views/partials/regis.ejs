@@ -1,5 +1,5 @@
 <label for="username">First Name</label>
-<input type="text" id="fname" name="name" placeholder="First Name">
+<input type="text" id="fname" name="name" placeholder="First Name" required>
 
 <select id="profession" name="gender">
     <option value="male">Male</option>
@@ -7,13 +7,16 @@
 </select>
 
 <label for="username">Email</label>
-<input type="text" id="fname" name="email" placeholder="email">
+<input type="text" id="fname" name="email" placeholder="email" required>
 
-<label for="username">Phone</label>
-<input type="text" id="fname" name="phone" placeholder="phone">
+<label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone"
+           placeholder="08xx-xxxx-xxxx"
+           pattern="[0]{1}[8]{1}[0-9]{10}"
+           required />
 
 <label for="username">BirthDate</label>
-<input type="text" id="fname" name="birthDate" placeholder="BirthDate">
+<input class="birthdate" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" name="birthDate" required/>
 
 <label for="username">City</label>
-<input type="text" id="fname" name="city" placeholder="city">
+<input type="text" id="fname" name="city" placeholder="city" required>

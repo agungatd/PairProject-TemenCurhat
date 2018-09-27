@@ -31,6 +31,27 @@ class Controller {
       res.send(err)
     })
   }
+
+  static register(req, res) {
+    res.render('percurhatRegister', {errMsg:null})
+  }
+
+  static registerPost(req, res) {
+    // res.send(req.body)
+    modelsPencurhat.create({
+      name: req.body.name,
+      gender: req.body.gender,
+      email: req.body.email,
+      phone: req.body.phone,
+      birthDate: req.body.birthDate,
+      city: req.body.city
+  })
+  .then((result) => {
+      res.redirect
+  }).catch((err) => {
+      res.send(err)
+  });
+  }
 }
 
 module.exports = Controller
