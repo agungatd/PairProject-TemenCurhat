@@ -6,6 +6,9 @@ const ControllerPencurhat = require('../controllers/pencurhat')
 router.get('/', ControllerPencurhat.login)
 router.post('/', ControllerPencurhat.loginPost)
 
+router.get('/register', ControllerPencurhat.register)
+router.post('/register', ControllerPencurhat.registerPost)
+
 //=================== CRUD ======================//
 // router.get('/', ControllerPencurhat.findAll)
 
