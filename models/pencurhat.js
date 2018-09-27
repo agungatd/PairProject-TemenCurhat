@@ -4,8 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       validate: {
-        notEmpty: true,
-        isAlpha: true
+        notEmpty: true
       }
     },
     gender: DataTypes.STRING,
@@ -13,18 +12,35 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true,
       validate: {
+        notEmpty: true,
         isEmail: true
       }
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING, 
       unique: true,
       validate: {
-        isInt: true
+        notEmpty: true
       }
     },
-    birthDate: DataTypes.DATEONLY,
-    city: DataTypes.STRING
+    birthDate: {
+      type: DataTypes.DATEONLY,
+      validate: {
+        notEmpty: true
+      }
+    },
+    city: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    }
   }, {});
   Pencurhat.associate = function(models) {
     // associations can be defined here

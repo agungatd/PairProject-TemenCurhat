@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Buat Sesi Curhat Baru</h1>
+  <hr>
+  <!-- FORM -->
+  <form action="/pencurhat/add" method="post">
+    <label for="title">Tema Curhat</label><br>
+    <input type="text" name="title" placeholder="Masukan Tema"><br><br>
+    <label for="description">Deskripsi (jika perlu)</label><br>
+    <input type="text" name="description" placeholder="Masukan Deskripsi"><br><br>
+    <label for="place">Tempat Curhat</label><br>
+    <input type="text" name="place" placeholder="Masukan Tempat Curhat"><br><br>
+    <label for="time">Waktu</label><br>
+    <input type="text" name="time" placeholder="Masukan Waktu Curhat"><br><br>
+    <label for="expertise">Keahlian Teman Curhat</label><br>
+    <select name="expertise">
+      <% expertises.forEach(expertise=>{ %>
+        <option value="<%= expertise.name %>"><%= expertise.name %></option>
+      <% }) %>
+    </select>
+    <br><br>
+    <label for="title">Kriteria Umur Teman Curhat ( +- range 5 tahun)</label><br>
+    <input type="number" name="age" placeholder="Masukan Umur"><br><br>
+    <label for="gender">Kriteria Jenis Kelamin Teman Curhat</label><br>
+    <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <br><br>
+    <label for="title">Reward Untuk Teman Curhat</label><br>
+    <input type="text" name="reward" placeholder="Masukan Deskripsi Reward"><br><br>
+    
+    <button type="submit">Tambahkan</button>   <button><a href="/pencurhat/dashboard">Batalkan</a></button>
+  </form>
+</body>
+</html>

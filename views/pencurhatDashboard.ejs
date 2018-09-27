@@ -8,5 +8,44 @@
 </head>
 <body>
   <h1>MASUK DASHBOARD PENCURHAT</h1>
+  <% if ( sessions.length === 0 ) { %>
+    <h3>Kamu belum membuat jadwal sesi curhat, buat dulu yuk!</h3>
+    <h4>Klik <a href="/pencurhat/add">buat sesi curhat</a></h4>
+  <% } %>
+  <!-- TABEL -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Tema Curhat</th>
+        <th>Deskripsi</th>
+        <th>Tempat</th>
+        <th>Waktu</th>
+        <th>Ahli Yang Dibutuhkan</th>
+        <th>Kriteria Umur</th>
+        <th>Kriteria Jenis Kelamin</th>
+        <th>Reward Untuk Teman Curhat</th>
+        <th>Status Sesi Curhat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sessions.forEach(sesi=>{ %>
+      <tr>
+        <td><%= sesi.title %></td>
+        <td><%= sesi.description %></td>
+        <td><%= sesi.place %></td>
+        <td><%= sesi.time %></td>
+        <td><%= sesi.expertise %></td>
+        <td><%= sesi.age %></td>
+        <td><%= sesi.gender %></td>
+        <td><%= sesi.reward %></td>
+        <% if (sesi.status) { %>
+          <td>Open</td>
+        <% } else { %>
+          <td>Closed</td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </body>
 </html>
