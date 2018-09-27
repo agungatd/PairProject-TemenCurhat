@@ -15,7 +15,7 @@ class Controller {
       let emailExist = false
       for (let i =0; i < data.length; i++) {
         if (req.body.email === data[i].email && req.body.password === data[i].password) {
-          res.render('pencurhatDashboard', {pencurhat:data[i], errMsg:null})
+          res.render('pencurhatDashboard', {pencurhat:data[i], errMsg:null, sessions:[]})
           emailExist = true
           break;
         } else if (req.body.email === data[i].email && req.body.password !== data[i].password) {
