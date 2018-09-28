@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3001
-const Nexmo = require('nexmo')
+const port = proccess.env.PORT || 3001;
 
 const session = require('express-session')
 app.use(session({
@@ -9,11 +8,6 @@ app.use(session({
   resave: false,
 }));
 
-//init nexmo
-const nexmo = new Nexmo({
-  apiKey: '151e5153',
-  apiSecret: 'lgxLpeqTPWfehi64'
-}, {debug:true})
 
 const PencurhatRoute = require('./routes/pencurhat')
 const TemenCurhatRoute = require('./routes/temencurhat')
@@ -31,21 +25,13 @@ app.use('/temen-curhat', TemenCurhatRoute)
 
 
 //send sms"
-app.get('/sms-sent', (req, res)=>{
-  res.render('sendSMS')
-})
-app.post('/sms-sent', (req, res)=>{
-  const number = req.body.number
-  const text = req.body.text
-// console.log(typeof number)
-  nexmo.message.sendSms(
-    '6287888587005', number, text, {type: 'unicode'}, 
-    (err, responseData)=>{
-      if(err) console.log(err);
-      else console.dir(responseData)
-    }
-  )
-})
+// app.get('/sms-sent', (req, res)=>{
+//   res.render('sendSMS')
+// })
+// app.post('/sms-sent', (req, res)=>{
+  
+//   )
+// })
 
 app.get('/', (req, res) => {res.render('home')})
 

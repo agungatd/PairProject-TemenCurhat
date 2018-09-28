@@ -122,8 +122,20 @@ class TemenCurhatController {
             id: req.params.idSesi
         }})
         .then((result) => {
+            modelsSesiCurhat.findById(req.params.idSesi)
+            .then((usersesi) => {
+                modelsPencurhat.findById(usersesi.PencurhatId)
+                .then((pencurhat) => {
+
+                    let txt = `Jadwal Ketemuan kamu di ${usersesi.place} pada ${usersesi.time} telah dijadwalkan ~ COD yuks ahh :)`
+                    let noTmn = req.session.user.phone
+                    let noCurhat = pencurhat.getPhone()
+                    // res.send(noCurhat)
+                    Helper.sendSMS(noTmn, noCurhat, txt )
+                    res.redirect('/temen-curhat/dashboard')
+                })
+            })
             
-            res.redirect('/temen-curhat/dashboard')
         }).catch((err) => {
             res.send(err)
         });
