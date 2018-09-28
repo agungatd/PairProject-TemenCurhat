@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = proccess.env.port || 3001;
+const port = process.env.port || 3001;
 
 const session = require('express-session')
 app.use(session({
@@ -21,17 +21,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/pencurhat', PencurhatRoute)
 app.use('/temen-curhat', TemenCurhatRoute)
-// app.use('sesi-curhat', SesiCurhatRoute)
 
-
-//send sms"
-// app.get('/sms-sent', (req, res)=>{
-//   res.render('sendSMS')
-// })
-// app.post('/sms-sent', (req, res)=>{
-  
-//   )
-// })
 
 app.get('/', (req, res) => {res.render('home')})
 
