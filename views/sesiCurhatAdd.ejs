@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <%- include('./partials/linkBootstrap')%>
+  <%- include('./partials/backgroud-style')%>
 </head>
 <body>
+  <div class="layer">
+    <%- include('./partials/header')%>
   <h1>Buat Sesi Curhat Baru</h1>
   <hr>
   <!-- FORM -->
@@ -39,5 +43,6 @@
     
     <button type="submit">Tambahkan</button>   <button><a href="/pencurhat/dashboard">Batalkan</a></button>
   </form>
+  </div>
 </body>
 </html>

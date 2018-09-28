@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>detail sesi</title>
+    <%- include('./partials/linkBootstrap')%>
+    <%- include('./partials/backgroud-style')%>
 </head>
 <body>
+        <%- include('./partials/header')%>
     <h1>Detail Sesi</h1>
     <br>
-    <table border="1">
+    <table class="table table-dark">
         <tr>
             <th>Title</th>
             <td><%= data.title %></td>
