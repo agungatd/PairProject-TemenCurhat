@@ -4,11 +4,165 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
   <title>Document</title>
 </head>
 <body>
   <h2>Pilih Mana?</h2>
   <a href="/temen-curhat"> Dengerin Curhat</a> || 
   <a href="/pencurhat">Yang Mau Curhat</a>
+=======
+  <title>Home</title>
+  <%- include('./partials/linkBootstrap')%>
+  <style>
+      html body {
+        font-family: 'Lato';
+        color: blanchedalmond;
+        /* background-color: azure; */
+        background-image: url('https://images.pexels.com/photos/988872/pexels-photo-988872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+        background-repeat: no-repeat;
+        background-size:  cover;
+      }
+
+      .container-content {
+        background-color: rgba(203, 211, 223, 0.514)
+      }
+  
+      h1 {
+        font-size: 40px;
+        margin-top: 50px;
+        font-weight: 700;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      h2 {
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        color: black;
+      }
+  
+      .container-choose {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 70%;
+        margin-left: 22%;
+        margin-right: auto;
+        text-align: center;
+        margin-top: 80px;
+        background-blend-mode: soft-light;
+      }
+  
+      .choice1,
+      .choice2 {
+        border: 2px solid black;
+        background-color: rgba(228, 200, 200, 0.356);
+        width: 60%;
+        padding: 10px 1px;
+      }
+  
+      .choice1 :hover,
+      .choice2 :hover {
+        border: 2px solid black;
+        width: 60%;
+        padding: 10px 50px;
+        background-color: black;
+      }
+  
+      .choice1 a:hover,
+      .choice2 a:hover {
+        color: white;
+      }
+  
+      .choice1 a,
+      .choice2 a {
+        text-decoration:double;
+        color: black;
+      }
+  
+      p {
+        font-family: 'Lato';
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 50px;
+        width: 60%;
+        padding-bottom: 20px;
+        border-bottom: 3px solid black;
+        color: black;
+      }
+  
+      .hvr-rotate {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+      }
+  
+      .hvr-rotate:hover,
+      .hvr-rotate:focus,
+      .hvr-rotate:active {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg);
+      }
+      /*footer*/
+
+.footer {
+    position: fixed;
+    left: 0;
+    top: 610px;
+    bottom: 0px;
+    width: 100%;
+    background-color:#263238;
+    color: white;
+    text-align: center;
+}
+.footer p {
+  color: white;
+}
+    </style>
+  
+  </head>
+  
+  <body>
+    <%- include('./partials/header')%>
+  
+  <div class="container-content">
+    <p>Teman Kerja adalah platform spesial untuk manusia-manusia yang butuh untuk didengar dan mendapatkan solusi tentang segala permasalahan hidupnya.
+      <br>
+      Apakah kamu salah satu nya ?
+      Atau kamu mau menjadi Teman dengar curhat orang-orang ?</p><br>
+      <p>Tunggu Apa lagi segera daftar dengan klik tombol dibawah</p>
+  
+    
+    <h2>Mau Jadi Apa Nih ??</h2>
+  
+    <div class="container-choose">
+      <div class="choice1 hvr-rotate">
+        <a href="/pencurhat/">Pemilik Unek-Unek ?</a>
+      </div>
+      <div class="choice2 hvr-rotate">
+        <a href="/temen-curhat/">Jadi Temen Curhat ?</a>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <%- include('./partials/footer')%>
+
+  <%- include('./partials/script')%>
+>>>>>>> 752ef04441a7b9e6ad1205f4a9a2bf26b019744b
 </body>
 </html>
