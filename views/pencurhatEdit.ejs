@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Edit Sesi Curhat Baru</h1>
+  <hr>
+  <!-- FORM -->
+  <form action="/pencurhat/<%= data.id %>/edit" method="post">
+    <label for="title">Tema Curhat</label><br>
+    <input type="text" name="title" value=<%= data.title %>><br><br>
+    <label for="description">Deskripsi (jika perlu)</label><br>
+    <input type="text" name="description" value=<%= data.description %>><br><br>
+    <label for="place">Tempat Curhat</label><br>
+    <input type="text" name="place" value=<%= data.place %>><br><br>
+    <label for="time">Waktu</label><br>
+    <input type="text" name="time" value=<%= data.time %>><br><br>
+    <label for="expertise">Keahlian Teman Curhat</label><br>
+    <select name="expertise">
+      <% expertises.forEach(expertise=>{ %>
+        <% if(expertise.name === data.expertice){ %>
+            <option value="<%= expertise.name %>"><%= expertise.name %> selected</option> %>
+        <% } %>
+        <option value="<%= expertise.name %>"><%= expertise.name %></option>
+      <% }) %>
+    </select>
+    <br><br>
+    <label for="title">Kriteria Umur Teman Curhat ( +- range 5 tahun)</label><br>
+    <input type="number" name="age" value=<%= data.age %>><br><br>
+    <label for="gender">Kriteria Jenis Kelamin Teman Curhat</label><br>
+    <select id="gender" name="gender">
+        <% if(data.gender === 'male'){ %>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+        <% }else { %>
+            <option value="female" selected>Female</option>
+            <option value="male">Male</option>
+        <% } %>
+    </select>
+    <br><br>
+    <label for="title">Reward Untuk Teman Curhat</label><br>
+    <input type="text" name="reward" value=<%= data.reward %>><br><br>
+    
+    <button type="submit">Ubah</button>   <button><a href="/pencurhat/dashboard">Batalkan</a></button>
+  </form>
+</body>
+</html>

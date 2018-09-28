@@ -17,5 +17,6 @@ router.get('/:idSesi/getsesi/:idTemen', TemenCurhatController.getsesi)
 
 router.get('/:id/delete', TemenCurhatController.delete)
 router.get('/:id/edit', TemenCurhatController.edit)
+
  
 module.exports = router

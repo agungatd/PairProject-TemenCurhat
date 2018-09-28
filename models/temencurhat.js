@@ -76,6 +76,11 @@ module.exports = (sequelize, DataTypes) => {
     return new Date().getFullYear() - new Date(this.birthDate).getFullYear() 
   }
 
+  TemenCurhat.getPhone = function(num){ 
+    let split = num.split('')
+    split[0] = '62'
+    return split.join('')
+  }
 
 
   return TemenCurhat;

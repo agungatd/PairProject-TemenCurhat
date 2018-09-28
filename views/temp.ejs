@@ -1,1 +1,31 @@
-<td><%= data.Pencurhat.name %></td>
+static detailsesi(req, res){
+    modelsTemenCurhat.findAll({
+        include: [{model: modelsPencurhat}],    // eiger loading erorr
+        where : {
+            Temen: req.session.user.id,
+
+        }
+    })
+    .then((result) => {
+        // res.send(result)
+        for(let i=0; i < result.length; i++){
+            if (result[i].id === req.session.user.id) {
+                res.send(sesi)
+                for (let j=0; j< result[i].Pencurhats.length; j++) {
+                    if(result[i].Pencurhats[j].SesiCurhat.length !== 0 ) {
+                        for (let k=0; k<result[i].Pencurhats[j].SesiCurhat.length; k++ ) {
+                            let sesi = result[i].Pencurhats[j].SesiCurhat[k]
+                            if(sesi.id === req.params.id) {
+                                let idSesi = req.session.user.id
+                                // res.render('temencurhatdetail', {data: sesi, idSesi: idSesi})
+                                
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }).catch((err) => {
+        res.send(err)
+    });
+}

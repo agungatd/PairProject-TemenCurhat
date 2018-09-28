@@ -59,5 +59,12 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Pencurhat.belongsToMany(models.TemenCurhat, {through: models.SesiCurhat})
   };
+
+  Pencurhat.getPhone = function(num){ // 086777777
+    let split = num.split('')
+    split[0] = '62'
+    return split.join('')
+  }
+
   return Pencurhat;
 };

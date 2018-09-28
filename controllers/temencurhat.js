@@ -104,8 +104,12 @@ class TemenCurhatController {
         })
         .then((result) => {
             // res.send(result)
-            let idSesi = req.session.user.id
-            res.render('temencurhatdetail', {data: result, idSesi: idSesi})
+            modelsPencurhat.findById(result.PencurhatId)
+            .then((pencurhat) => {
+                let idSesi = req.session.user.id
+                res.render('temencurhatdetail', {data: result, idSesi: idSesi, pencurhat: pencurhat})
+            })
+            
         }).catch((err) => {
             res.send(err)
         });
@@ -118,6 +122,7 @@ class TemenCurhatController {
             id: req.params.idSesi
         }})
         .then((result) => {
+            
             res.redirect('/temen-curhat/dashboard')
         }).catch((err) => {
             res.send(err)
@@ -138,19 +143,19 @@ class TemenCurhatController {
             } else{
                 req.session.user = {
                     id: user.id,
-                    age: user.getAge()
+                    age: user.getAge(),
+                    phone: modelsTemenCurhat.getPhone(user.phone)
                 }
+                console.log(req.session.user);
+                
                 setTimeout(() => {
                     res.redirect('/temen-curhat/dashboard');
                 }, 2000);
         }}).catch((err) => {
             res.send(err)
         });
-
-
-
     }
-
+    
 }
 
 module.exports = TemenCurhatController

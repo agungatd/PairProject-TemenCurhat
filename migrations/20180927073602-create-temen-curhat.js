@@ -18,8 +18,11 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      password: {
+        type: Sequelize.STRING
+      },
       phone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         unique: true
       },
       birthDate: {

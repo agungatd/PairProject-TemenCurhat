@@ -15,8 +15,12 @@
             <td><%= data.title %></td>
         </tr>
         <tr>
-            <th>Nama yang mo Curhat</th>
-            <td>name</td>
+            <th>Nama/Id yang mo Curhat</th>
+            <% if(pencurhat){ %>
+                <td><%= pencurhat.name %></td>
+            <% } else { %>
+                <td><%= data.PencurhatId %></td>
+            <% } %>
         </tr>
         <tr>
             <th>Gender</th>
@@ -49,7 +53,7 @@
         <% if(data.testimony){ %>
             <tr>
                 <th>Testimoni</th>
-                <td><%= data.testimoni %></td>
+                <td><%= data.testimony %></td>
             </tr>
         <% } %>
     </table>

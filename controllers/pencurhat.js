@@ -57,7 +57,11 @@ class Controller {
 
   static findAllSesiCurhat(req, res) {
     // res.send('dashboard')
-    modelsSesiCurhat.findAll()
+    modelsSesiCurhat.findAll({
+      where: {
+        PencurhatId: req.session.user.id
+      }
+    })
     .then(sessions=>{
       modelExpertise.findAll()
       .then(expertises=>{
@@ -69,35 +73,97 @@ class Controller {
     });
   }
 
-//   static addSesiCurhat(req, res) {
-//     modelExpertise.findAll()
-//       .then(expertises=>{
-//         res.render('sesiCurhatAdd', {expertises:expertises})
-//       })
-//       .catch((err) => {
-//         res.send(err)
-//       });
-//   }
-//   static addSesiCurhatPost(req,res) {
-//     res.send(req.body)
-//     modelsSesiCurhat.create({
-//       title: req.body.title,
-//       description: req.body.description,
-//       place: req.body.place,
-//       expertise: req.body.expertise,
-//       time: req.body.time,
-//       age: req.body.age,
-//       gender: req.body.gender,
-//       rating: null,
-//       reward: req.body.reward,
-//       // PencurhatId: req.session.user
-//     })
-    
-//   }
+  static addSesiCurhat(req, res) {
+    modelExpertise.findAll()
+      .then(expertises=>{
+        res.render('sesiCurhatAdd', {expertises:expertises})
+      })
+      .catch((err) => {
+        res.send(err)
+      });
+  }
+  static addSesiCurhatPost(req,res) {
+    // res.send(req.session.user)
+    modelsSesiCurhat.create({
+      title: req.body.title,
+      description: req.body.description,
+      place: req.body.place,
+      expertise: req.body.expertise,
+      time: req.body.time,
+      age: req.body.age,
+      gender: req.body.gender,
+      rating: null,
+      reward: req.body.reward,
+      PencurhatId: req.session.user.id
+    })
+    .then(expertises=>{
+      res.redirect('/pencurhat/dashboard')
+    })
+    .catch((err) => {
+      res.send(err)
+    });
+  }
+  static edit(req, res){
+    modelsSesiCurhat.findById(req.params.id)
+    .then((result) => {
+      modelExpertise.findAll()
+      .then((expertises) => {
+        res.render('pencurhatEdit', {data: result, expertises: expertises})
+      })
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
 
+  static editPost(req, res){
+    modelsSesiCurhat.update({
+      title: req.body.title,
+      description: req.body.description,
+      place: req.body.place,
+      expertise: req.body.expertise,
+      time: req.body.time,
+      age: req.body.age,
+      gender: req.body.gender,
+      rating: req.body.rating,
+      reward: req.body.reward,
+      PencurhatId: req.session.user.id
+    }, {where: {
+      id:req.params.id
+    }})
+    .then((result) => {
+      res.redirect('/pencurhat/dashboard')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+  static delete(req, res){
+    modelsSesiCurhat.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then((result) => {
+      res.redirect('/pencurhat/dashboard')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+  static reviewForm(req, res){
+    res.render('pencurhatReview', {id: req.params.id})
+  }
 
-
-
+  static review(req, res){
+    modelsSesiCurhat.update({
+      testimony: req.body.testimony
+    }, {where: {
+      id: req.params.id
+    }})
+    .then((result) => {
+      res.redirect('/pencurhat/dashboard')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
 
 }
 
