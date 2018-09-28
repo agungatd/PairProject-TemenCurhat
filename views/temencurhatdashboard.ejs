@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <%- include('./partials/linkBootstrap')%>
+    <%- include('./partials/backgroud-style')%>
+</head>
+<body>
+        <%- include('./partials/header')%>
+    <h1>Dashboard Temen Curhat</h1>
+    <h3>Hi Temen Curhat :)</h3>
+    <h4>Bantu Orang lain untuk share masalah yang mereka hadapi</h4>
+    <h4>Kamu akan mendapatkan teman baru, pengalaman dan juga reward ❤️</h4>
+
+    <h4>===== jadwal Sesi TemenCurhat kamu : ======</h4>
+        <table class="table table-dark">
+            <tr>
+                <th>Waktu</th>
+                <th>Tempat</th>
+                <th>Judul</th>
+                <th>Hadiah</th>
+                <th>Pilihan</th>
+                <th>Status</th>
+            </tr>
+            <% mySesi.forEach(sesi => { %>
+                <tr>
+                    <td><%= sesi.time %></td>
+                    <td><%= sesi.place %></td>
+                    <td><%= sesi.title %></td>
+                    <td><%= sesi.reward %></td>
+                    <td><a href="/temen-curhat/<%=sesi.id%>/detailsesi">Detail</a></td>
+                    <% if(!sesi.testimony){ %>
+                        <td>belum direview</td>
+                    <% } else { %>
+                        <td>Sudah direview</td>
+                    <% } %>
+                </tr>
+            <% }) %>
+        </table>
+
+    <h4>===== Calon teman (atau mungkin calon jodoh) yang membutuhkan Kamu : =====</h4>
+
+    <table class="table table-dark">
+        <tr>
+            <th>Waktu</th>
+            <th>Tempat</th>
+            <th>Judul</th>
+            <th>Hadiah</th>
+            <th>Pilihan</th>
+        </tr>
+        <% datas.forEach(data => { %>
+            <tr>
+                <td><%= data.time %></td>
+                <td><%= data.place %></td>
+                <td><%= data.title %></td>
+                <td><%= data.reward %></td>
+                <td><a href="/temen-curhat/<%=data.id%>/detailsesi">Detail</a></td>
+            </tr>
+        <% }) %>
+
+    </table>
+
+</body>
+</html>

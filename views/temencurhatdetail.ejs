@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>detail sesi</title>
+    <%- include('./partials/linkBootstrap')%>
+    <%- include('./partials/backgroud-style')%>
+</head>
+<body>
+        <%- include('./partials/header')%>
+    <h1>Detail Sesi</h1>
+    <br>
+    <table class="table table-dark">
+        <tr>
+            <th>Title</th>
+            <td><%= data.title %></td>
+        </tr>
+        <tr>
+            <th>Nama/Id yang mo Curhat</th>
+            <% if(pencurhat){ %>
+                <td><%= pencurhat.name %></td>
+            <% } else { %>
+                <td><%= data.PencurhatId %></td>
+            <% } %>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><%= data.gender %></td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td><%= data.age %></td>
+        </tr>
+        <tr>
+            <th>Expertise/category</th>
+            <td><%= data.expertise %></td>
+        </tr>
+        <tr>
+            <th>Reward</th>
+            <td><%= data.reward %></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><%= data.place %></td>
+        </tr>
+        <tr>
+            <th>time</th>
+            <td><%= data.time %></td>
+        </tr>
+        <tr>
+            <th>description</th>
+            <td><%= data.description %></td>
+        </tr>
+        <% if(data.testimony){ %>
+            <tr>
+                <th>Testimoni</th>
+                <td><%= data.testimony %></td>
+            </tr>
+        <% } %>
+    </table>
+    <a href="/temen-curhat/dashboard">Back</a>
+    <% if(!data.status){ %>
+        <a href="/temen-curhat/<%= data.id %>/getsesi/<%= idSesi %>">Ambil Sesi</a>
+    <% } %>
+<br>
+</body>
+</html>

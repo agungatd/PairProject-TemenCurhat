@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <%- include('./partials/linkBootstrap')%>
+ <%- include('./partials/backgroud-style')%>
+</head>
+<body>
+    <%- include('./partials/header')%>
+  <h1>DASHBOARD PENCURHAT</h1>
+  <% if ( sessions.length === 0 ) { %>
+    <h3>Kamu belum membuat jadwal sesi curhat, buat dulu yuk!</h3>
+  <% } %>
+  <!-- TABEL -->
+  <h4>Klik <a href="/pencurhat/add">buat sesi curhat baru</a></h4><br>
+  <table class="table table-light" >
+    <thead class="thead-dark">
+      <tr>
+        <th>Tema Curhat</th>
+        <th>Deskripsi</th>
+        <th>Tempat</th>
+        <th>Waktu</th>
+        <th>Ahli Yang Dibutuhkan</th>
+        <th>Kriteria Umur</th>
+        <th>Kriteria Jenis Kelamin</th>
+        <th>Reward Untuk Teman Curhat</th>
+        <th>Status Sesi Curhat & Pilihan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sessions.forEach(sesi=>{ %>
+      <tr>
+        <td><%= sesi.title %></td>
+        <td><%= sesi.description %></td>
+        <td><%= sesi.place %></td>
+        <td><%= sesi.time %></td>
+        <td><%= sesi.expertise %></td>
+        <td><%= sesi.age %></td>
+        <td><%= sesi.gender %></td>
+        <td><%= sesi.reward %></td>
+        <% if (sesi.status) { %>
+          <td>Selesai 
+              <% if(!sesi.testimony){ %>
+            ||
+          <a href="/pencurhat/<%= sesi.id %>/review">Kasi Review</a>
+          
+            Selesai
+            <% } %>
+          </td>
+        <% } else { %>
+          <td>Mencari
+            ||
+          <a href="/pencurhat/<%= sesi.id %>/edit">EDIT</a> || <a href="/pencurhat/<%= sesi.id %>/delete">DELETE</a></td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+   <!-- Script -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <%- include('./partials/linkBootstrap')%>
+  <%- include('./partials/backgroud-style')%>
+</head>
+<body>
+    <%- include('./partials/header')%>
+  <h1>Temen Curhat Login</h1>
+  <br>
+    <form action="/temen-curhat/login" method="POST" class="login-form">
+        <%- include('./partials/login') %>
+    </form>
+    <h2 class="text-center">Ga punya akun? <br><a href="/temen-curhat/register">register</a></h2>
+</body>
+</html> 
