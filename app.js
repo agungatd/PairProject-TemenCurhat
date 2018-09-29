@@ -42,7 +42,7 @@ app.post('/sms-sent', (req, res)=>{
     '6287888587005', number, text, {type: 'unicode'}, 
     (err, responseData)=>{
       if(err) console.log(err);
-      else console.dir(responseData)
+      else console. (responseData)
     }
   )
 })
